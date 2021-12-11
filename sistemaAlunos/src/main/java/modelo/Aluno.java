@@ -80,6 +80,5 @@ public class Aluno {
                 + "\nsérie: " + serie
                 + "\nsituação: " + situacao
                 + "\nendereço: " + endereco;
-    }
-                
+    }            
 }

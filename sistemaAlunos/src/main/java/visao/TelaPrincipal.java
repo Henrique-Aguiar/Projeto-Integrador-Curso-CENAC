@@ -27,38 +27,56 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         areaPrincipal = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        labelTitulo = new javax.swing.JLabel();
+        barraMenu = new javax.swing.JMenuBar();
+        menuCadastrar = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuEditar = new javax.swing.JMenu();
+        menuConsultar = new javax.swing.JMenu();
+        menuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(204, 255, 255));
+        labelTitulo.setText("Sistema de alunos");
+
+        areaPrincipal.setLayer(labelTitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout areaPrincipalLayout = new javax.swing.GroupLayout(areaPrincipal);
         areaPrincipal.setLayout(areaPrincipalLayout);
         areaPrincipalLayout.setHorizontalGroup(
             areaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+            .addGroup(areaPrincipalLayout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         areaPrincipalLayout.setVerticalGroup(
             areaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGroup(areaPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Cadastror");
-        jMenuBar1.add(jMenu1);
+        menuCadastrar.setText("Cadastror");
 
-        jMenu4.setText("Editar");
-        jMenuBar1.add(jMenu4);
+        jMenuItem1.setText("Cadastrar aluno");
+        menuCadastrar.add(jMenuItem1);
 
-        jMenu2.setText("Consultar");
-        jMenuBar1.add(jMenu2);
+        barraMenu.add(menuCadastrar);
 
-        jMenu3.setText("Sobre");
-        jMenuBar1.add(jMenu3);
+        menuEditar.setText("Editar");
+        barraMenu.add(menuEditar);
 
-        setJMenuBar(jMenuBar1);
+        menuConsultar.setText("Consultar");
+        barraMenu.add(menuConsultar);
+
+        menuSobre.setText("Sobre");
+        barraMenu.add(menuSobre);
+
+        setJMenuBar(barraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,10 +130,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane areaPrincipal;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JMenu menuCadastrar;
+    private javax.swing.JMenu menuConsultar;
+    private javax.swing.JMenu menuEditar;
+    private javax.swing.JMenu menuSobre;
     // End of variables declaration//GEN-END:variables
 }
