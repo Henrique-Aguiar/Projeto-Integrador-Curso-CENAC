@@ -72,7 +72,7 @@ public class Aluno {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+     
     public String toString(){
         return "matricula: " + matricula
                 + "\nnome: " + nome 
