@@ -6,35 +6,28 @@ package modelo;
 
 /**
  *
- * @author User
+ * @author Emille
  */
 public class Endereco {
+
+    private int codEndereco;
+    private String rua;
     private String cidade;
     private String bairro;
-    private String rua;
-    private String numeroCasa;
-    
-    public Endereco(String cidade, String bairro, String rua, String numeroCasa){
-        
-        this.cidade = cidade;
-        this.bairro = bairro;
+
+    public Endereco(int codEndereco, String cidade, String bairro, String rua) {
+        this.codEndereco = codEndereco;
         this.rua = rua;
-        this.numeroCasa = numeroCasa;
-    }
-    
-    public String getCidade(){
-        return cidade;
-    }
-    public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public int getCodEndereco() {
+        return codEndereco;
+    }
+
+    public void setCodEndereco(int codEndereco) {
+        this.codEndereco = codEndereco;
     }
 
     public String getRua() {
@@ -45,17 +38,26 @@ public class Endereco {
         this.rua = rua;
     }
 
-    public String getNumeroCasa() {
-        return numeroCasa;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setNumeroCasa(String numeroCasa) {
-        this.numeroCasa = numeroCasa;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+
     }
-    
-    public String toStrig(){
-        return cidade + ", " + bairro + ", "
-                + rua + ", nº" + numeroCasa; 
+
+    public String getBairro() {
+        return bairro;
     }
-    
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String toString() {
+        return "cidade: " + cidade
+                + "\nbairro: " + bairro
+                + "\nrua: " + rua;
+    }
 }

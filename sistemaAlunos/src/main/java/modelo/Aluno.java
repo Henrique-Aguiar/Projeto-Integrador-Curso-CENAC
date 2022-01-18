@@ -6,39 +6,48 @@ package modelo;
 
 /**
  *
- * @author User
+ * @author Emille
  */
 public class Aluno {
+
+    private String nome;
     private int matricula;
-    private String nome;   
+    private Endereco endereco;
     private String telefone;
     private int serie;
-    private String situacao;
-    private Endereco endereco;
-    
-    public Aluno(int matricula, String nome, String telefone,
-            int serie, String situacao, Endereco endereco){
-        
-        this.matricula = matricula;
+
+    public Aluno(int matricula, String nome, String telefone, int serie,
+            Endereco endereco) {
+
         this.nome = nome;
+        this.matricula = matricula;
+        this.endereco = endereco;
         this.telefone = telefone;
         this.serie = serie;
-        this.situacao = situacao;
-        this.endereco = endereco;
     }
-    
-    public int getMatricula(){
-        return matricula;
-    }
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getTelefone() {
@@ -57,28 +66,12 @@ public class Aluno {
         this.serie = serie;
     }
 
-    public String getSituacao() {
-        return situacao;
-    }
+    public String toString() {
+        return "nome: " + nome
+                + "\nmatricula" + matricula
+                + "\nendereco" + endereco
+                + "\ntelefone" + telefone
+                + "\nserie" + serie;
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
     }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-     
-    public String toString(){
-        return "matricula: " + matricula
-                + "\nnome: " + nome 
-                + "\ntelefone: " + telefone
-                + "\nsérie: " + serie
-                + "\nsituação: " + situacao
-                + "\nendereço: " + endereco;
-    }            
 }
