@@ -15,8 +15,9 @@ public class Aluno {
     private Endereco endereco;
     private String telefone;
     private int serie;
+    private String situacao;
 
-    public Aluno(int matricula, String nome, String telefone, int serie,
+    public Aluno(int matricula, String nome, String telefone, int serie, String situacao,
             Endereco endereco) {
 
         this.nome = nome;
@@ -24,6 +25,24 @@ public class Aluno {
         this.endereco = endereco;
         this.telefone = telefone;
         this.serie = serie;
+        this.situacao = situacao;
+    }
+    
+    public Aluno(String nome, String telefone, int serie, String situacao){
+        this.nome = nome;   
+        this.telefone = telefone;
+        this.serie = serie;
+        this.situacao = situacao;
+    }
+    
+    public Aluno(String nome, String telefone, int serie, String situacao,
+            Endereco endereco) {
+
+        this.nome = nome;        
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.serie = serie;
+        this.situacao = situacao;
     }
 
     public String getNome() {
@@ -66,12 +85,20 @@ public class Aluno {
         this.serie = serie;
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
     public String toString() {
         return "nome: " + nome
-                + "\nmatricula" + matricula
-                + "\nendereco" + endereco
-                + "\ntelefone" + telefone
-                + "\nserie" + serie;
+                + "\nmatricula: " + matricula
+                + "\nendereco: " + endereco
+                + "\ntelefone: " + telefone
+                + "\nserie: " + serie;
 
     }
 }
