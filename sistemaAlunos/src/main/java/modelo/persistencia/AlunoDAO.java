@@ -7,6 +7,7 @@ package modelo.persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import modelo.Aluno;
 
 /**
@@ -14,6 +15,8 @@ import modelo.Aluno;
  * @author gdsant
  */
 public class AlunoDAO {
+
+    public static int qtdAlunosRegistrados = 0;
 
     /**
      * Salva o registro de uma aluno no banco de dados.
@@ -43,6 +46,7 @@ public class AlunoDAO {
         comandoPreparado.close();
         conexao.close();
 
+        qtdAlunosRegistrados++;
         return true;
     }
 
@@ -68,6 +72,7 @@ public class AlunoDAO {
         comandoPreparado.close();
         conexao.close();
 
+        qtdAlunosRegistrados--;
         return true;
     }
 
@@ -82,12 +87,12 @@ public class AlunoDAO {
     }
 
     /**
-     * Realiza uma busca por alunos dado um determinado nome.
+     * Realiza uma busca por alunos com um determinado nome.
      *
      * @param nome o nome ou parte do nome do(s) aluno(s) que se deseja(m)
      * buscar.
      * @return vetor com os alunos cujos nomes correspondem com o parâmetro
-     * dado.
+     * recebido.
      */
     public static Aluno[] buscarPorNome(String nome) throws Exception {
         return null; // retorno temporário, falta implementar
@@ -99,7 +104,33 @@ public class AlunoDAO {
      * @return vetor com todos os alunos cadastrados no banco de dados.
      */
     public static Aluno[] listarTodos() throws Exception {
-        return null; // retorno temporário, falta implementar
+        Connection conexao = FabricaDeConexoes.getConnection();
+
+        String sql = "SELECT * FROM aluno";
+
+        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+
+        ResultSet resultado = comandoPreparado.executeQuery();
+
+        Aluno[] alunos = new Aluno[qtdAlunosRegistrados];
+        int contAlunos = 0;
+
+        while (resultado.next()) {
+            int matricula = resultado.getInt("matricula");
+            String nome = resultado.getString("nome");
+            String telefone = resultado.getString("telefone");
+            int serie = resultado.getInt("serie");
+            String situacao = resultado.getString("situacao");
+            Aluno a = new Aluno(matricula, nome, telefone, serie, situacao);
+            alunos[contAlunos] = a;
+            contAlunos++;
+        }
+
+        resultado.close();
+        comandoPreparado.close();
+        conexao.close();
+
+        return alunos;
     }
 
     /**
@@ -124,6 +155,21 @@ public class AlunoDAO {
      */
     public static boolean alterarSituacao(int matricula, String situacao)
             throws Exception {
-        return false; // retorno temporário, falta implementar
+
+        Connection conexao = FabricaDeConexoes.getConnection();
+
+        String sql = "UPDATE aluno SET situacao = ? WHERE matricula = ?";
+
+        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+
+        comandoPreparado.setString(1, situacao);
+        comandoPreparado.setInt(2, matricula);
+
+        comandoPreparado.execute();
+
+        comandoPreparado.close();
+        conexao.close();
+
+        return true;
     }
 }

@@ -10,12 +10,20 @@ package modelo;
  */
 public class Aluno {
 
-    private String nome;
     private int matricula;
-    private Endereco endereco;
+    private String nome;
     private String telefone;
     private int serie;
     private String situacao;
+    private Endereco endereco;
+
+    public Aluno(int matricula, String nome, String telefone, int serie, String situacao) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.telefone = telefone;
+        this.serie = serie;
+        this.situacao = situacao;
+    }
 
     public Aluno(int matricula, String nome, String telefone, int serie, String situacao,
             Endereco endereco) {
@@ -27,18 +35,18 @@ public class Aluno {
         this.serie = serie;
         this.situacao = situacao;
     }
-    
-    public Aluno(String nome, String telefone, int serie, String situacao){
-        this.nome = nome;   
+
+    public Aluno(String nome, String telefone, int serie, String situacao) {
+        this.nome = nome;
         this.telefone = telefone;
         this.serie = serie;
         this.situacao = situacao;
     }
-    
+
     public Aluno(String nome, String telefone, int serie, String situacao,
             Endereco endereco) {
 
-        this.nome = nome;        
+        this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.serie = serie;

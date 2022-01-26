@@ -81,8 +81,25 @@ public class EnderecoDAO {
      * @return true: se foi possível realizar a alteração.<br>
      * false; se não foi possível realizar a alteração.
      */
-    public static boolean alterar(Endereco e) {
-        return false; // retorno temporário, falta implementar
+    public static boolean alterar(Endereco e) throws Exception {
+        Connection conexao = FabricaDeConexoes.getConnection();
+        
+        String sql = "UPDATE endereco SET cidade = ?, bairro = ?, rua = ?,"
+                + " numero = ? WHERE cod_endereco = ?";
+        
+        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+        
+        comandoPreparado.setString(1, e.getCidade());
+        comandoPreparado.setString(2, e.getBairro());
+        comandoPreparado.setString(3, e.getRua());
+        comandoPreparado.setInt(4, e.getNumero());
+        comandoPreparado.setInt(5, e.getCodEndereco());
+        
+        comandoPreparado.execute();
+        comandoPreparado.close();
+        conexao.close();
+        
+        return true;
     }
 
     /**
@@ -92,7 +109,7 @@ public class EnderecoDAO {
      * @return objeto da classe Endereço com os dados encontrados<br>
      * null: se não foi possível encontrar endereço.
      */
-    public static Endereco buscarPorCodigo(int codEndereco) {
+    public static Endereco buscarPorCodigo(int codEndereco) throws Exception {
         return null; // retorno temporário, falta implementar
     }
 }

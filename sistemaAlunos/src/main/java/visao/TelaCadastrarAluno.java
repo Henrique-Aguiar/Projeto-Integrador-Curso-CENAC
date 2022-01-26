@@ -237,9 +237,9 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
                                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                                         .addGap(48, 48, 48)
                                         .addComponent(labelNumero)
-                                        .addGap(1, 1, 1)
+                                        .addGap(18, 18, 18)
                                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 263, Short.MAX_VALUE)))
+                        .addGap(0, 246, Short.MAX_VALUE)))
                 .addGap(17, 17, 17))
         );
         painelPrincipalLayout.setVerticalGroup(
