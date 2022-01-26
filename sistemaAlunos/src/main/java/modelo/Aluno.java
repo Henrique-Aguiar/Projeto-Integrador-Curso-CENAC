@@ -17,6 +17,15 @@ public class Aluno {
     private int serie;
     private String situacao;
 
+    public Aluno(int matricula, String nome, String telefone, int serie, String situacao) {
+        
+        this.matricula = matricula;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.serie = serie;
+        this.situacao = situacao;
+    }
+    
     public Aluno(int matricula, String nome, String telefone, int serie, String situacao,
             Endereco endereco) {
 
@@ -98,7 +107,8 @@ public class Aluno {
                 + "\nmatricula: " + matricula
                 + "\nendereco: " + endereco
                 + "\ntelefone: " + telefone
-                + "\nserie: " + serie;
+                + "\nserie: " + serie
+                + "\nsituação: " + situacao;
 
     }
 }
