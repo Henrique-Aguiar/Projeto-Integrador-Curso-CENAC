@@ -44,7 +44,7 @@ public class AlunoControle {
 
     // método estático listarTodos
     public static Aluno[] listarTodos() throws Exception {
-        return AlunoDAO.listarTodos(); // retorno temporário, falta implementar
+        return null; // retorno temporário, falta implementar
     }
 
     // método estático alterar
@@ -53,10 +53,7 @@ public class AlunoControle {
     }
 
     // método estático alterar situação
-    public static boolean alterarSituacao(int matricula, String situacao)throws Exception {
-        if (situacao.isEmpty()) {
-            return false;
-        }
-        return AlunoDAO.alterarSituacao(matricula, situacao);
+    public static boolean alterarSituacao(int matricula, String situacao){
+        return false; // retorno temporário, falta implementar
     }
 }

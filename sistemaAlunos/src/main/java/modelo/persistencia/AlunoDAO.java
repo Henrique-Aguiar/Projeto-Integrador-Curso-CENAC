@@ -7,8 +7,8 @@ package modelo.persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import modelo.Aluno;
+
 /**
  *
  * @author gdsant
@@ -99,34 +99,7 @@ public class AlunoDAO {
      * @return vetor com todos os alunos cadastrados no banco de dados.
      */
     public static Aluno[] listarTodos() throws Exception {
-        
-        Connection conexao = FabricaDeConexoes.getConnection();
-        
-        String sql = "SELECT * FROM aluno";
-        
-        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
-        
-        ResultSet resultado = comandoPreparado.executeQuery();
-        
-        Aluno[] alunos = new Aluno[100];
-        int contAlunos = 0;
-        
-        while(resultado.next()){
-            int matricula = resultado.getInt("matricula");
-            String nome = resultado.getString("nome");
-            String telefone = resultado.getString("telefone");
-            int serie = resultado.getInt("serie");
-            String situacao = resultado.getString("situacao");
-            Aluno a = new Aluno(matricula, nome, telefone, serie, situacao);
-            alunos[contAlunos] = a;
-            contAlunos++;
-        }
-        
-        resultado.close();
-        comandoPreparado.close();
-        conexao.close();
-        
-         return alunos ;
+        return null; // retorno temporário, falta implementar
     }
 
     /**
@@ -151,22 +124,6 @@ public class AlunoDAO {
      */
     public static boolean alterarSituacao(int matricula, String situacao)
             throws Exception {
-        
-        Connection conexao = FabricaDeConexoes.getConnection();
-        
-        String sql = "UPDATE aluno SET situacao = ? WHERE matricula = ?";
-        
-        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
-        
-         comandoPreparado.setString(1, situacao);
-         comandoPreparado.setInt(2, matricula);
-         
-         comandoPreparado.execute();
-
-        comandoPreparado.close();
-        conexao.close();
-
-        return true;
-        
+        return false; // retorno temporário, falta implementar
     }
 }
