@@ -16,7 +16,16 @@ import modelo.Endereco;
  */
 public class EnderecoDAO {
 
-    // método estático salvar
+    /**
+     * Salva um endereço no banco de dados, que posteriormente será atribuído a
+     * um aluno.
+     *
+     * @param e objeto da classe endereço, cujas informações serão registrados
+     * no banco de dados.
+     * @return o código do endereço que foi registrado no banco de dados para
+     * que seja atribuído ao aluno correspondente.<br>
+     * 0 se não foi possível salvar.
+     */
     public static int salvar(Endereco e) throws Exception {
 
         Connection conexao = FabricaDeConexoes.getConnection();
@@ -39,26 +48,51 @@ public class EnderecoDAO {
         return getEnderecoRecemCriado();
     }
 
+    /**
+     * Retorna código do endereço recém criado.
+     *
+     * @return o último código de endereço (o que tem o maior valor) registrado
+     * no banco de dados.
+     */
     public static int getEnderecoRecemCriado() throws Exception {
         Connection conexao = FabricaDeConexoes.getConnection();
 
         String sql = "SELECT max(cod_endereco) as endereco_recem_criado FROM endereco";
 
         PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
-        
+
         ResultSet resultado = comandoPreparado.executeQuery();
-        
+
         resultado.next();
-        
+
         int ultimoCodEndereco = resultado.getInt("endereco_recem_criado");
-        
+
         resultado.close();
         comandoPreparado.close();
         conexao.close();
-        
+
         return ultimoCodEndereco;
     }
 
-    // método estático excluir
-    // método estático alterar
+    /**
+     * Altera endereço de aluno.
+     *
+     * @param e o endereço modificado.
+     * @return true: se foi possível realizar a alteração.<br>
+     * false; se não foi possível realizar a alteração.
+     */
+    public static boolean alterar(Endereco e) {
+        return false; // retorno temporário, falta implementar
+    }
+
+    /**
+     * Realiza a busca pelo endereço com um código determinado.
+     *
+     * @param codEndereco código do endereço que se deseja buscar.
+     * @return objeto da classe Endereço com os dados encontrados<br>
+     * null: se não foi possível encontrar endereço.
+     */
+    public static Endereco buscarPorCodigo(int codEndereco) {
+        return null; // retorno temporário, falta implementar
+    }
 }

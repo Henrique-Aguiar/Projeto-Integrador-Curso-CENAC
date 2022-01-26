@@ -10,7 +10,8 @@ package visao;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-            private int quantidadeComponentesInicial;
+    private int quantidadeComponentesInicial;
+
     /**
      * Creates new form TelaPrincipal
      */
@@ -282,7 +283,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuItemCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarAlunoActionPerformed
         // TODO add your handling code here:
-         abrirJanelaCadastro();
+        abrirJanelaCadastro();
     }//GEN-LAST:event_menuItemCadastrarAlunoActionPerformed
 
     private void menuItemCadastrarEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarEnderecoActionPerformed
@@ -302,14 +303,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         abrirJanelaCadastro();
     }//GEN-LAST:event_btnCadastrarAlunoActionPerformed
 
-            private void abrirJanelaCadastro(){
-            if(areaPrincipal.getComponentCount () == quantidadeComponentesInicial ){
-            TelaCadastroAluno telaCadastroAluno = new TelaCadastroAluno();
-             areaPrincipal.add(telaCadastroAluno);
-             telaCadastroAluno.centralizarJanela();
-            telaCadastroAluno.setVisible(true); 
-            }
-           }
+    private void abrirJanelaCadastro() {
+        if (areaPrincipal.getComponentCount() == quantidadeComponentesInicial) {
+            TelaCadastrarAluno telaCadastrarAluno = new TelaCadastrarAluno();
+            areaPrincipal.add(telaCadastrarAluno);            
+            telaCadastrarAluno.setVisible(true);
+        }
+    }
+    
     private void btnExcluirAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirAlunoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirAlunoActionPerformed

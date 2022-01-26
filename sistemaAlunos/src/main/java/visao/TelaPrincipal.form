@@ -343,9 +343,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="labelLogo">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Emille\Downloads\Sistema.jpg"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[388, 227]"/>

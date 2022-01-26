@@ -7,6 +7,7 @@ package visao;
 
 import controle.AlunoControle;
 import controle.EnderecoControle;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,7 +54,7 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
         labelNumero = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         labelEndereco1 = new javax.swing.JLabel();
-        comboBoxSerieSituacao = new javax.swing.JComboBox<>();
+        comboBoxSituacao = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,7 +102,6 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
 
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setForeground(new java.awt.Color(0, 0, 0));
-        txtNome.setText(" ");
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
@@ -113,7 +113,6 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
 
         txtCidade.setBackground(new java.awt.Color(255, 255, 255));
         txtCidade.setForeground(new java.awt.Color(0, 0, 0));
-        txtCidade.setText(" ");
         txtCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCidadeActionPerformed(evt);
@@ -128,7 +127,6 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
 
         txtTelefone.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefone.setForeground(new java.awt.Color(0, 0, 0));
-        txtTelefone.setText(" ");
         txtTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefoneActionPerformed(evt);
@@ -147,7 +145,7 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
         labelSerie.setForeground(new java.awt.Color(255, 255, 255));
         labelSerie.setText("Série:");
 
-        comboBoxSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "1", "2", "3" }));
         comboBoxSerie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxSerieActionPerformed(evt);
@@ -162,7 +160,6 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
 
         txtBairro.setBackground(new java.awt.Color(255, 255, 255));
         txtBairro.setForeground(new java.awt.Color(0, 0, 0));
-        txtBairro.setText(" ");
         txtBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBairroActionPerformed(evt);
@@ -174,7 +171,6 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
 
         txtRua.setBackground(new java.awt.Color(255, 255, 255));
         txtRua.setForeground(new java.awt.Color(0, 0, 0));
-        txtRua.setText(" ");
         txtRua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRuaActionPerformed(evt);
@@ -186,7 +182,6 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
 
         txtNumero.setBackground(new java.awt.Color(255, 255, 255));
         txtNumero.setForeground(new java.awt.Color(0, 0, 0));
-        txtNumero.setText(" ");
         txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroActionPerformed(evt);
@@ -196,10 +191,10 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
         labelEndereco1.setForeground(new java.awt.Color(255, 255, 255));
         labelEndereco1.setText("Endereço:");
 
-        comboBoxSerieSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxSerieSituacao.addActionListener(new java.awt.event.ActionListener() {
+        comboBoxSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Em processo", "Aprovado", "Reprovado", "Recuperação" }));
+        comboBoxSituacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxSerieSituacaoActionPerformed(evt);
+                comboBoxSituacaoActionPerformed(evt);
             }
         });
 
@@ -224,25 +219,27 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
                             .addComponent(labelRua))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(painelPrincipalLayout.createSequentialGroup()
                                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtRua, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                                     .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                                     .addComponent(comboBoxSerie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboBoxSerieSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboBoxSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(labelEndereco1)
                                     .addComponent(labelEndereco)
                                     .addComponent(txtCidade)
                                     .addComponent(txtBairro))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCadastrar, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
+                                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCadastrar))
+                                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                        .addGap(48, 48, 48)
                                         .addComponent(labelNumero)
                                         .addGap(1, 1, 1)
-                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 263, Short.MAX_VALUE)))
                 .addGap(17, 17, 17))
         );
         painelPrincipalLayout.setVerticalGroup(
@@ -263,7 +260,7 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSituacao)
-                    .addComponent(comboBoxSerieSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,9 +313,34 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTelefoneActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        int codEndereco = EnderecoControle.cadastrar(txtCidade.getText(), "", "", 1);
 
-        AlunoControle.cadastrar(txtNome.getText(), "", 2, "", codEndereco);
+        try {
+            int codEndereco = EnderecoControle.cadastrar(txtCidade.getText(),
+                    txtBairro.getText(), txtRua.getText(),
+                    Integer.parseInt(txtNumero.getText()));
+
+            if (codEndereco != 0) {
+                boolean cadastrou = AlunoControle.cadastrar(txtNome.getText(),
+                        txtTelefone.getText(), comboBoxSerie.getSelectedIndex(),
+                        (String) comboBoxSituacao.getSelectedItem(), codEndereco);
+                if (cadastrou) {
+                    JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Verifique os dados pessoais.",
+                            "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifique o endereço.",
+                        "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar.",
+                    "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void comboBoxSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSerieActionPerformed
@@ -337,15 +359,15 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
 
-    private void comboBoxSerieSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSerieSituacaoActionPerformed
+    private void comboBoxSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSituacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxSerieSituacaoActionPerformed
+    }//GEN-LAST:event_comboBoxSituacaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JComboBox<String> comboBoxSerie;
-    private javax.swing.JComboBox<String> comboBoxSerieSituacao;
+    private javax.swing.JComboBox<String> comboBoxSituacao;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelBairro;

@@ -21,39 +21,49 @@ import modelo.persistencia.FabricaDeConexoes;
 public class TesteConexaoMySql {
 
     public static void main(String[] args) {
+        Endereco e = new Endereco(108, "Feira de Santana", "Massaranduba", 
+                "Rua Quatro", 28); // endereço pego do banco
+        
+        // usuário altera alguns dados
+        e.setCidade("Feira de Santana"); // txtCidade.getText();
+        e.setBairro("Alecrim"); // txtBairro.getText();
+        e.setRua("Rua 44"); // txtRua.getText()
+        e.setNumero(28); // Integer.parseInt(txtNumero.getText())
+        
+        alterarEndereco(e); // clicou no botão alterar
+    }
+    
+    public static void alterarEndereco(Endereco e){
         try {
-            String nome, telefone, situacao, cidade, bairro, rua;
-            int serie, numero;
-
-            nome = "Maria Albuquerque";
-            telefone = "(71) 90123-4567";
-            situacao = "Em processo";
-            serie = 2;
-
-            cidade = "Salvador";
-            bairro = "Alameda";
-            rua = "Rua Três";
-            numero = 50;
-
-            int ultimoEndereco = EnderecoControle.cadastrar(cidade, bairro, rua, numero);
-            if (ultimoEndereco == 0) {
-                System.out.println("Endereço incorreto.");
-            } else {
-                boolean cadastrou = AlunoControle.cadastrar(
-                        nome, telefone, serie, situacao, ultimoEndereco); 
-                if(cadastrou){
-                    System.out.println("Cadastrado com sucesso!");
-                } else {
-                    System.out.println("Aluno não foi cadastrado");
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            
+            Connection conexao = FabricaDeConexoes.getConnection();
+            
+            String sql = "UPDATE endereco "
+                    + "SET cidade = ?, "
+                    + "bairro = ?, "
+                    + "rua = ?, "
+                    + "numero_casa = ? "
+                    + "WHERE cod_endereco = ?";
+            
+            PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+            
+            comandoPreparado.setString(1, e.getCidade());
+            comandoPreparado.setString(2, e.getBairro());
+            comandoPreparado.setString(3, e.getRua());
+            comandoPreparado.setInt(4, e.getNumero());
+            comandoPreparado.setInt(5, e.getCodEndereco());
+            
+            comandoPreparado.execute();
+            
+            comandoPreparado.close();
+            conexao.close();                    
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
-
-    public static void executarDQL(String cidade) {
+    
+    public static void buscarEnderecoPorCidade(String cidade) {
         try {
 
             Connection conexao = FabricaDeConexoes.getConnection();
@@ -87,7 +97,7 @@ public class TesteConexaoMySql {
 
     }
 
-    public static void executarDML() {
+    public static void inserirDadosEmEndereco() {
         try {
 
             Connection conexao = DriverManager.getConnection(
@@ -108,7 +118,7 @@ public class TesteConexaoMySql {
         }
     }
 
-    public static void executarDML(Endereco e) {
+    public static void inserirDadosEmEndereco(Endereco e) {
         try {
 
             Connection conexao = DriverManager.getConnection(

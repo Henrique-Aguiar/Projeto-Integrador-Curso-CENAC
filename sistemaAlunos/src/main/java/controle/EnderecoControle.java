@@ -27,6 +27,13 @@ public class EnderecoControle {
         return ultimoEndereco;
     }
 
-    // método estático excluir
     // método estático alterar
+    public static boolean alterar(Endereco e){
+        return false; // retorno temporário, falta implementar método
+    }
+    
+    // método estático buscar endereço por código
+    public static Endereco buscarPorCodigo(int codigo){
+        return null; // retorno temporário, falta implementar
+    }
 }
