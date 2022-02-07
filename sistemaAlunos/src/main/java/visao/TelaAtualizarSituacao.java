@@ -5,6 +5,8 @@
  */
 package visao;
 
+import controle.AlunoControle;
+import javax.swing.JOptionPane;
 /**
  *
  * @author gdsant
@@ -70,6 +72,11 @@ public class TelaAtualizarSituacao extends javax.swing.JInternalFrame {
         labelNome.setText("NOME:");
 
         txtNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         labelMatricula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,8 +174,27 @@ public class TelaAtualizarSituacao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMatriculaActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-        // TODO add your handling code here:
+        int matricula = Integer.parseInt(txtMatricula.getText());
+        String situacao = String.valueOf(comboBoxSituacao.getSelectedItem());
+        aluno.setSituacao(situacao);
+        
+        try {
+            if (AlunoControle.alterarSituacao(matricula, situacao)) {
+                JOptionPane.showMessageDialog(this, "Alterado com sucesso!");
+                this.dispose();
+            }else {
+                JOptionPane.showMessageDialog(this, "Não foi possível alterar");
+            }
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro no banco de dados: " 
+                    + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_buttonSalvarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

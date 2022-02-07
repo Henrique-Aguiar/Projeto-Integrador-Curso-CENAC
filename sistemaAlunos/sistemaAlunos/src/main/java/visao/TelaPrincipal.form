@@ -32,9 +32,9 @@
             <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="submenuAluno">
+            <Menu class="javax.swing.JMenu" name="menuItemAlterarAluno">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Aluno"/>
+                <Property name="text" type="java.lang.String" value="Alterar Dados de Aluno"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="submenuAlterarDados">
@@ -52,9 +52,9 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="submenuEndereco">
+            <Menu class="javax.swing.JMenu" name="menuItemAtualizarSituacao">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+                <Property name="text" type="java.lang.String" value="Atualizar Situa&#xe7;&#xe3;o"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="submenuExcluir">
@@ -79,12 +79,15 @@
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="submenuConsultarAlunos">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemBuscarPorSerie">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar alunos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemBuscarPorSerieActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="submenuConsultarEndereco">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemListarTodos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar endere&#xe7;os"/>
               </Properties>
@@ -211,7 +214,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="labelLogo" min="-2" pref="390" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
