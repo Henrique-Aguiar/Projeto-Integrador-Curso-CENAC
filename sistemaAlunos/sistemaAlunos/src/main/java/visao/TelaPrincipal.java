@@ -43,15 +43,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuItemCadastrarAluno = new javax.swing.JMenuItem();
         menuItemCadastrarEndereco = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
-        menuItemAlterarAluno = new javax.swing.JMenu();
+        submenuAluno = new javax.swing.JMenu();
         submenuAlterarDados = new javax.swing.JMenuItem();
         submenuAlunoExcluir = new javax.swing.JMenuItem();
-        menuItemAtualizarSituacao = new javax.swing.JMenu();
+        submenuEndereco = new javax.swing.JMenu();
         submenuExcluir = new javax.swing.JMenuItem();
         submenuEnderecoAlterar = new javax.swing.JMenuItem();
         menuConsultar = new javax.swing.JMenu();
-        menuItemBuscarPorSerie = new javax.swing.JMenuItem();
-        menuItemListarTodos = new javax.swing.JMenuItem();
+        submenuConsultarAlunos = new javax.swing.JMenuItem();
+        submenuConsultarEndereco = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         submenuContato = new javax.swing.JMenuItem();
         submenuListaAluno = new javax.swing.JMenuItem();
@@ -116,6 +116,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        labelLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Emille\\Downloads\\Sistema.jpg")); // NOI18N
         labelLogo.setText("jLabel1");
         labelLogo.setMinimumSize(new java.awt.Dimension(388, 227));
 
@@ -142,7 +143,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+                .addGap(176, 176, 176))
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +197,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menuEditar.setText("Editar");
 
-        menuItemAlterarAluno.setText("Alterar Dados de Aluno");
+        submenuAluno.setText("Aluno");
 
         submenuAlterarDados.setText("Alterar dados");
         submenuAlterarDados.addActionListener(new java.awt.event.ActionListener() {
@@ -204,14 +205,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 submenuAlterarDadosActionPerformed(evt);
             }
         });
-        menuItemAlterarAluno.add(submenuAlterarDados);
+        submenuAluno.add(submenuAlterarDados);
 
         submenuAlunoExcluir.setText("Excluir");
-        menuItemAlterarAluno.add(submenuAlunoExcluir);
+        submenuAluno.add(submenuAlunoExcluir);
 
-        menuEditar.add(menuItemAlterarAluno);
+        menuEditar.add(submenuAluno);
 
-        menuItemAtualizarSituacao.setText("Atualizar Situação");
+        submenuEndereco.setText("Endereço");
 
         submenuExcluir.setText("Alterar dados");
         submenuExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -219,27 +220,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 submenuExcluirActionPerformed(evt);
             }
         });
-        menuItemAtualizarSituacao.add(submenuExcluir);
+        submenuEndereco.add(submenuExcluir);
 
         submenuEnderecoAlterar.setText("Excluir");
-        menuItemAtualizarSituacao.add(submenuEnderecoAlterar);
+        submenuEndereco.add(submenuEnderecoAlterar);
 
-        menuEditar.add(menuItemAtualizarSituacao);
+        menuEditar.add(submenuEndereco);
 
         barraMenu.add(menuEditar);
 
         menuConsultar.setText("Consultar");
 
-        menuItemBuscarPorSerie.setText("Consultar alunos");
-        menuItemBuscarPorSerie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemBuscarPorSerieActionPerformed(evt);
-            }
-        });
-        menuConsultar.add(menuItemBuscarPorSerie);
+        submenuConsultarAlunos.setText("Consultar alunos");
+        menuConsultar.add(submenuConsultarAlunos);
 
-        menuItemListarTodos.setText("Consultar endereços");
-        menuConsultar.add(menuItemListarTodos);
+        submenuConsultarEndereco.setText("Consultar endereços");
+        menuConsultar.add(submenuConsultarEndereco);
 
         barraMenu.add(menuConsultar);
 
@@ -327,10 +323,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_submenuSobreActionPerformed
 
-    private void menuItemBuscarPorSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemBuscarPorSerieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemBuscarPorSerieActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -379,17 +371,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenu menuConsultar;
     private javax.swing.JMenu menuEditar;
-    private javax.swing.JMenu menuItemAlterarAluno;
-    private javax.swing.JMenu menuItemAtualizarSituacao;
-    private javax.swing.JMenuItem menuItemBuscarPorSerie;
     private javax.swing.JMenuItem menuItemCadastrarAluno;
     private javax.swing.JMenuItem menuItemCadastrarEndereco;
-    private javax.swing.JMenuItem menuItemListarTodos;
     private javax.swing.JPanel painelPrincipal;
     private javax.swing.JPanel painelTitulo;
     private javax.swing.JMenuItem submenuAlterarDados;
+    private javax.swing.JMenu submenuAluno;
     private javax.swing.JMenuItem submenuAlunoExcluir;
+    private javax.swing.JMenuItem submenuConsultarAlunos;
+    private javax.swing.JMenuItem submenuConsultarEndereco;
     private javax.swing.JMenuItem submenuContato;
+    private javax.swing.JMenu submenuEndereco;
     private javax.swing.JMenuItem submenuEnderecoAlterar;
     private javax.swing.JMenuItem submenuExcluir;
     private javax.swing.JMenuItem submenuListaAluno;
