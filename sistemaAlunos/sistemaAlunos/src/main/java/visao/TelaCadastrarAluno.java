@@ -7,6 +7,8 @@ package visao;
 
 import controle.AlunoControle;
 import controle.EnderecoControle;
+import java.awt.Dimension;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +22,11 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
      */
     public TelaCadastrarAluno() {
         initComponents();
+    }
+
+    public void centralizar() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -86,9 +93,9 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
         painelTituloLayout.setHorizontalGroup(
             painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelTituloLayout.createSequentialGroup()
-                .addGap(227, 227, 227)
+                .addGap(121, 121, 121)
                 .addComponent(labelTitulo)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelTituloLayout.setVerticalGroup(
             painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,39 +214,37 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelPrincipalLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(painelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelPrincipalLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelNome)
-                            .addComponent(labelSituacao)
-                            .addComponent(labelTelefone)
-                            .addComponent(labelSerie)
-                            .addComponent(labelCidade)
-                            .addComponent(labelBairro)
-                            .addComponent(labelRua))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadastrar)
                             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtRua, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                                    .addComponent(comboBoxSerie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboBoxSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelEndereco1)
-                                    .addComponent(labelEndereco)
-                                    .addComponent(txtCidade)
-                                    .addComponent(txtBairro))
+                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelNome)
+                                    .addComponent(labelSituacao)
+                                    .addComponent(labelTelefone)
+                                    .addComponent(labelSerie)
+                                    .addComponent(labelCidade)
+                                    .addComponent(labelBairro)
+                                    .addComponent(labelRua))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCadastrar))
-                                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtRua, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                            .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                                            .addComponent(comboBoxSerie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(comboBoxSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(labelEndereco1)
+                                            .addComponent(labelEndereco)
+                                            .addComponent(txtCidade)
+                                            .addComponent(txtBairro))
                                         .addGap(48, 48, 48)
                                         .addComponent(labelNumero)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 246, Short.MAX_VALUE)))
+                        .addGap(0, 9, Short.MAX_VALUE)))
                 .addGap(17, 17, 17))
         );
         painelPrincipalLayout.setVerticalGroup(
@@ -281,9 +286,9 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
                     .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelNumero)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastrar)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,16 +320,26 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
         try {
-            int codEndereco = EnderecoControle.cadastrar(txtCidade.getText(),
-                    txtBairro.getText(), txtRua.getText(),
-                    Integer.parseInt(txtNumero.getText()));
+            int codEndereco = EnderecoControle.cadastrar(
+                    txtCidade.getText(),
+                    txtBairro.getText(),
+                    txtRua.getText(),
+                    Integer.parseInt(txtNumero.getText())
+            );
 
             if (codEndereco != 0) {
-                boolean cadastrou = AlunoControle.cadastrar(txtNome.getText(),
-                        txtTelefone.getText(), comboBoxSerie.getSelectedIndex(),
-                        (String) comboBoxSituacao.getSelectedItem(), codEndereco);
+                boolean cadastrou = AlunoControle.cadastrar(
+                        txtNome.getText(),
+                        txtTelefone.getText(),
+                        comboBoxSerie.getSelectedIndex(),
+                        (String) comboBoxSituacao.getSelectedItem(),
+                        codEndereco
+                );
+
                 if (cadastrou) {
-                    JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!");
+                    JOptionPane.showMessageDialog(this,
+                            "Cadastrado com sucesso!",
+                            "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Verifique os dados pessoais.",
@@ -336,9 +351,12 @@ public class TelaCadastrarAluno extends javax.swing.JInternalFrame {
                         "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
             }
 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Digite um número de endereço válido",
+                    "Campo 'Número' inválido", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar.",
-                    "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(),
+                    "Erro no sistema", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed

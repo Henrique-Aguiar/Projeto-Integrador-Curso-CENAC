@@ -10,6 +10,11 @@ package modelo;
  */
 public class Aluno {
 
+    public static final int EM_PROCESSO = 0;
+    public static final int APROVADO = 1;
+    public static final int REPROVADO = 2;
+    public static final int RECUPERACAO = 3;
+
     private int matricula;
     private String nome;
     private String telefone;
@@ -22,6 +27,13 @@ public class Aluno {
         this.matricula = matricula;
         this.telefone = telefone;
         this.serie = serie;
+        this.situacao = situacao;
+    }
+
+    public Aluno(int matricula, String nome, String telefone, String situacao) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.telefone = telefone;
         this.situacao = situacao;
     }
 

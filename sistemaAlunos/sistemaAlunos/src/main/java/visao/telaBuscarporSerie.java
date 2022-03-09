@@ -4,17 +4,32 @@
  */
 package visao;
 
+import controle.AlunoControle;
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Aluno;
+
 /**
  *
  * @author Emille
  */
-public class telaBuscarporSerie extends javax.swing.JInternalFrame {
+public class TelaBuscarPorSerie extends javax.swing.JInternalFrame {
+
+    private Aluno[] alunosEncontrados;
+    private int qtdComponentesInicial;
 
     /**
      * Creates new form telaBuscarporSerie
      */
-    public telaBuscarporSerie() {
+    public TelaBuscarPorSerie() {
         initComponents();
+        qtdComponentesInicial = areaPrincipal.getComponentCount();
+    }
+
+    public void centralizar() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -26,17 +41,26 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        areaPrincipal = new javax.swing.JDesktopPane();
         painelPrincipal = new javax.swing.JPanel();
         painelTitulo = new javax.swing.JPanel();
         labelTitulo = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        labelserie = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        labelInformarSerie = new javax.swing.JLabel();
+        scrollPaneTabela = new javax.swing.JScrollPane();
+        tabelaResultadosBusca = new javax.swing.JTable();
+        comboBoxSerie = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Busca por série");
+
+        areaPrincipal.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentRemoved(java.awt.event.ContainerEvent evt) {
+                areaPrincipalComponentRemoved(evt);
+            }
+        });
 
         painelPrincipal.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -70,6 +94,11 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setBackground(new java.awt.Color(0, 102, 102));
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -81,10 +110,11 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
             }
         });
 
-        labelserie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelserie.setText("\"3º ano\"");
+        labelInformarSerie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelInformarSerie.setForeground(new java.awt.Color(255, 255, 255));
+        labelInformarSerie.setText("Informar série:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaResultadosBusca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -93,7 +123,7 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -107,27 +137,51 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        scrollPaneTabela.setViewportView(tabelaResultadosBusca);
+
+        comboBoxSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "1º Ano", "2º Ano", "3º Ano" }));
+        comboBoxSerie.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxSerieItemStateChanged(evt);
+            }
+        });
+        comboBoxSerie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxSerieActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneTabela, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                .addComponent(btnAlterar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnExcluir))
-                            .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelserie, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(labelInformarSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar))
+                            .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                    .addComponent(btnAlterar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnExcluir))
+                                .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(12, 12, 12))
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,9 +189,12 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
                 .addGap(9, 9, 9)
                 .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelserie, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelInformarSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addComponent(scrollPaneTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
@@ -145,16 +202,16 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15))
         );
 
-        jDesktopPane1.setLayer(painelPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        areaPrincipal.setLayer(painelPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout areaPrincipalLayout = new javax.swing.GroupLayout(areaPrincipal);
+        areaPrincipal.setLayout(areaPrincipalLayout);
+        areaPrincipalLayout.setHorizontalGroup(
+            areaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        areaPrincipalLayout.setVerticalGroup(
+            areaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -162,32 +219,158 @@ public class telaBuscarporSerie extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(areaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(areaPrincipal)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tabelaResultadosBusca.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+
+            if (areaPrincipal.getComponentCount() == qtdComponentesInicial) {
+                TelaAlterarAluno telaAlterar = new TelaAlterarAluno(
+                        alunosEncontrados[tabelaResultadosBusca.getSelectedRow()]
+                );
+
+                areaPrincipal.add(telaAlterar);
+                telaAlterar.setVisible(true);
+                telaAlterar.centralizar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum aluno foi selecionado",
+                    "Selecione um aluno", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
+    private void comboBoxSerieItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxSerieItemStateChanged
+
+    }//GEN-LAST:event_comboBoxSerieItemStateChanged
+
+    private void comboBoxSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSerieActionPerformed
+
+    }//GEN-LAST:event_comboBoxSerieActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try {
+            int serie = comboBoxSerie.getSelectedIndex();
+
+            if (serie != 0) {
+                alunosEncontrados
+                        = AlunoControle.buscarPorSerie(serie);
+
+                if (alunosEncontrados != null) {
+
+                    carregarTabela();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Verifique se o campo está selecionado.",
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Nenhuma série foi selecionada.",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro na busca:\n" + e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linhaSelecionada = tabelaResultadosBusca.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            int opcao = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir?",
+                    "Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
+            if (opcao == JOptionPane.YES_OPTION) {
+                try {
+                    int matricula = alunosEncontrados[linhaSelecionada].getMatricula();
+                    boolean sucesso = AlunoControle.excluir(matricula);
+                    if (sucesso) {
+                        JOptionPane.showMessageDialog(this, "Excluido com sucesso!");
+
+                        atualizarTabela();
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Não foi possível excluir! "
+                                + " Tente novamente.",
+                                "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(),
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();
+                    this.dispose();
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhuma série foi selecionada",
+                    "Selecione uma série.", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void atualizarTabela() {
+        // após alteração de dados ou exclusão, atualiza-se o vetor e a tabela
+
+        try {
+            alunosEncontrados
+                    = AlunoControle.buscarPorSerie(comboBoxSerie.getSelectedIndex());
+
+            carregarTabela();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void areaPrincipalComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_areaPrincipalComponentRemoved
+        atualizarTabela();
+    }//GEN-LAST:event_areaPrincipalComponentRemoved
+
+    private void carregarTabela() {
+        DefaultTableModel tabelaModel
+                = (DefaultTableModel) tabelaResultadosBusca.getModel();
+
+        tabelaModel.setRowCount(0); // zerar a tabela
+
+        for (Aluno a : alunosEncontrados) {
+            if (a != null) {
+                // 
+                String[] linha = {
+                    String.valueOf(a.getMatricula()),
+                    a.getNome(),
+                    a.getTelefone(),
+                    a.getSituacao()
+                };
+
+                tabelaModel.addRow(linha);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane areaPrincipal;
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> comboBoxSerie;
+    private javax.swing.JLabel labelInformarSerie;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JLabel labelserie;
     private javax.swing.JPanel painelPrincipal;
     private javax.swing.JPanel painelTitulo;
+    private javax.swing.JScrollPane scrollPaneTabela;
+    private javax.swing.JTable tabelaResultadosBusca;
     // End of variables declaration//GEN-END:variables
 }

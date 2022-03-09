@@ -16,7 +16,7 @@ public class FabricaDeConexoes {
 
     public static Connection getConnection() throws Exception {
         Connection conexao = DriverManager.getConnection(
-                "jdbc:mysql://localhost/banco_alunos", "root", "1234");
+                "jdbc:mysql://localhost/banco_alunos", "root", "99680262");
 
         return conexao;
     }

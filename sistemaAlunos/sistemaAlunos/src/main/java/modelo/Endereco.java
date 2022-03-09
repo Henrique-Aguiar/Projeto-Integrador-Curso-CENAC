@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Emille
@@ -23,8 +25,8 @@ public class Endereco {
         this.bairro = bairro;
         this.numero = numero;
     }
-    
-    public Endereco(String cidade, String bairro, String rua, int numero) {        
+
+    public Endereco(String cidade, String bairro, String rua, int numero) {
         this.rua = rua;
         this.cidade = cidade;
         this.bairro = bairro;
@@ -78,4 +80,17 @@ public class Endereco {
                 + "\nrua: " + rua
                 + "\nnumero: " + numero;
     }
+
+    public static void main(String[] args) {
+        try {
+            int opcao = Integer.parseInt(
+                    JOptionPane.showInputDialog("Digite a opção numérica"));
+
+            System.out.println(opcao);
+        } catch (NumberFormatException e) {
+            System.out.println("Digite um número de endereço válido");
+        }
+
+    }
+
 }

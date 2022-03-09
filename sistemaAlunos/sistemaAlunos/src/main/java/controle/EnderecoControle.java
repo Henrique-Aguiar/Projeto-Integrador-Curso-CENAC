@@ -23,8 +23,8 @@ public class EnderecoControle {
         }
 
         Endereco e = new Endereco(cidade, bairro, rua, numero);
-        int ultimoEndereco = EnderecoDAO.salvar(e);
-        return ultimoEndereco;
+        int codEnderecoCadastrado = EnderecoDAO.salvar(e);
+        return codEnderecoCadastrado;
     }
 
     // método estático alterar
@@ -37,8 +37,4 @@ public class EnderecoControle {
         return EnderecoDAO.alterar(e);
     }
 
-    // método estático buscar endereço por código
-    public static Endereco buscarPorCodigo(int codigo) {
-        return null; // retorno temporário, falta implementar
-    }
 }

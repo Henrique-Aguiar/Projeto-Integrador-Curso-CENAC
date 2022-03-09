@@ -4,6 +4,8 @@
  */
 package visao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Emille
@@ -35,28 +37,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         labelTitulo = new javax.swing.JLabel();
         labelAcessoFacil = new javax.swing.JLabel();
         btnCadastrarAluno = new javax.swing.JButton();
-        btnBuscarEndereco = new javax.swing.JButton();
-        btnExcluirAluno = new javax.swing.JButton();
+        btnBuscarPorNome = new javax.swing.JButton();
+        btnListarTodos = new javax.swing.JButton();
         labelLogo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuCadastrar = new javax.swing.JMenu();
         menuItemCadastrarAluno = new javax.swing.JMenuItem();
-        menuItemCadastrarEndereco = new javax.swing.JMenuItem();
-        menuEditar = new javax.swing.JMenu();
-        submenuAluno = new javax.swing.JMenu();
-        submenuAlterarDados = new javax.swing.JMenuItem();
-        submenuAlunoExcluir = new javax.swing.JMenuItem();
-        submenuEndereco = new javax.swing.JMenu();
-        submenuExcluir = new javax.swing.JMenuItem();
-        submenuEnderecoAlterar = new javax.swing.JMenuItem();
         menuConsultar = new javax.swing.JMenu();
-        submenuConsultarAlunos = new javax.swing.JMenuItem();
-        submenuConsultarEndereco = new javax.swing.JMenuItem();
-        menuAjuda = new javax.swing.JMenu();
-        submenuContato = new javax.swing.JMenuItem();
-        submenuListaAluno = new javax.swing.JMenuItem();
-        submenuListaEndereco = new javax.swing.JMenuItem();
-        submenuSobre = new javax.swing.JMenuItem();
+        menuItemBuscarPorNome = new javax.swing.JMenuItem();
+        menuItemBuscarPorSerie = new javax.swing.JMenuItem();
+        menuItemListarTodos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Alunos");
@@ -94,71 +84,71 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnCadastrarAluno.setBackground(new java.awt.Color(0, 102, 102));
         btnCadastrarAluno.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCadastrarAluno.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastrarAluno.setText("CADASTRAR ALUNO");
+        btnCadastrarAluno.setText("CADASTRAR");
         btnCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarAlunoActionPerformed(evt);
             }
         });
 
-        btnBuscarEndereco.setBackground(new java.awt.Color(0, 102, 102));
-        btnBuscarEndereco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscarEndereco.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarEndereco.setText("BUSCAR ENDEREÇO");
-
-        btnExcluirAluno.setBackground(new java.awt.Color(0, 102, 102));
-        btnExcluirAluno.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnExcluirAluno.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluirAluno.setText("EXCLUIR ALUNO");
-        btnExcluirAluno.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPorNome.setBackground(new java.awt.Color(0, 102, 102));
+        btnBuscarPorNome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarPorNome.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarPorNome.setText("BUSCAR POR NOME");
+        btnBuscarPorNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirAlunoActionPerformed(evt);
+                btnBuscarPorNomeActionPerformed(evt);
             }
         });
 
-        labelLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Emille\\Downloads\\Sistema.jpg")); // NOI18N
-        labelLogo.setText("jLabel1");
+        btnListarTodos.setBackground(new java.awt.Color(0, 102, 102));
+        btnListarTodos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnListarTodos.setForeground(new java.awt.Color(255, 255, 255));
+        btnListarTodos.setText("LISTAR TODOS");
+        btnListarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarTodosActionPerformed(evt);
+            }
+        });
+
+        labelLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\MicrosoftTeams-image.png")); // NOI18N
         labelLogo.setMinimumSize(new java.awt.Dimension(388, 227));
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelAcessoFacil)
-                            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(btnBuscarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(btnExcluirAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(176, 176, 176))
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelAcessoFacil)
+                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                        .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscarPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnListarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
+                .addContainerGap()
                 .addComponent(painelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(labelAcessoFacil)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluirAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscarPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51))
         );
 
@@ -185,85 +175,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menuCadastrar.add(menuItemCadastrarAluno);
 
-        menuItemCadastrarEndereco.setText("Cadastrar endereço");
-        menuItemCadastrarEndereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemCadastrarEnderecoActionPerformed(evt);
-            }
-        });
-        menuCadastrar.add(menuItemCadastrarEndereco);
-
         barraMenu.add(menuCadastrar);
-
-        menuEditar.setText("Editar");
-
-        submenuAluno.setText("Aluno");
-
-        submenuAlterarDados.setText("Alterar dados");
-        submenuAlterarDados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submenuAlterarDadosActionPerformed(evt);
-            }
-        });
-        submenuAluno.add(submenuAlterarDados);
-
-        submenuAlunoExcluir.setText("Excluir");
-        submenuAluno.add(submenuAlunoExcluir);
-
-        menuEditar.add(submenuAluno);
-
-        submenuEndereco.setText("Endereço");
-
-        submenuExcluir.setText("Alterar dados");
-        submenuExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submenuExcluirActionPerformed(evt);
-            }
-        });
-        submenuEndereco.add(submenuExcluir);
-
-        submenuEnderecoAlterar.setText("Excluir");
-        submenuEndereco.add(submenuEnderecoAlterar);
-
-        menuEditar.add(submenuEndereco);
-
-        barraMenu.add(menuEditar);
 
         menuConsultar.setText("Consultar");
 
-        submenuConsultarAlunos.setText("Consultar alunos");
-        menuConsultar.add(submenuConsultarAlunos);
+        menuItemBuscarPorNome.setText("Buscar Aluno(s) Por Nome");
+        menuItemBuscarPorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemBuscarPorNomeActionPerformed(evt);
+            }
+        });
+        menuConsultar.add(menuItemBuscarPorNome);
 
-        submenuConsultarEndereco.setText("Consultar endereços");
-        menuConsultar.add(submenuConsultarEndereco);
+        menuItemBuscarPorSerie.setText("Buscar Alunos Por Série");
+        menuItemBuscarPorSerie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemBuscarPorSerieActionPerformed(evt);
+            }
+        });
+        menuConsultar.add(menuItemBuscarPorSerie);
+
+        menuItemListarTodos.setText("Listar Todos os Alunos");
+        menuItemListarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemListarTodosActionPerformed(evt);
+            }
+        });
+        menuConsultar.add(menuItemListarTodos);
 
         barraMenu.add(menuConsultar);
-
-        menuAjuda.setText("Ajuda");
-
-        submenuContato.setText("Contato");
-        submenuContato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submenuContatoActionPerformed(evt);
-            }
-        });
-        menuAjuda.add(submenuContato);
-
-        submenuListaAluno.setText("Lista de alunos");
-        menuAjuda.add(submenuListaAluno);
-
-        submenuListaEndereco.setText("Lista de endereços");
-        menuAjuda.add(submenuListaEndereco);
-
-        submenuSobre.setText("Sobre");
-        submenuSobre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submenuSobreActionPerformed(evt);
-            }
-        });
-        menuAjuda.add(submenuSobre);
-
-        barraMenu.add(menuAjuda);
 
         setJMenuBar(barraMenu);
 
@@ -282,46 +222,64 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarAlunoActionPerformed
-        // TODO add your handling code here:
         abrirJanelaCadastro();
     }//GEN-LAST:event_menuItemCadastrarAlunoActionPerformed
 
-    private void menuItemCadastrarEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarEnderecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemCadastrarEnderecoActionPerformed
-
-    private void submenuAlterarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuAlterarDadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submenuAlterarDadosActionPerformed
-
-    private void submenuExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submenuExcluirActionPerformed
-
     private void btnCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAlunoActionPerformed
-        // TODO add your handling code here:
         abrirJanelaCadastro();
     }//GEN-LAST:event_btnCadastrarAlunoActionPerformed
 
     private void abrirJanelaCadastro() {
         if (areaPrincipal.getComponentCount() == quantidadeComponentesInicial) {
             TelaCadastrarAluno telaCadastrarAluno = new TelaCadastrarAluno();
-            areaPrincipal.add(telaCadastrarAluno);            
+            areaPrincipal.add(telaCadastrarAluno);
             telaCadastrarAluno.setVisible(true);
+            telaCadastrarAluno.centralizar();
         }
     }
-    
-    private void btnExcluirAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirAlunoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirAlunoActionPerformed
 
-    private void submenuContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuContatoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submenuContatoActionPerformed
+    private void btnListarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarTodosActionPerformed
+        abrirJanelaListarTodos();
+    }//GEN-LAST:event_btnListarTodosActionPerformed
 
-    private void submenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuSobreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submenuSobreActionPerformed
+    private void menuItemBuscarPorSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemBuscarPorSerieActionPerformed
+        if (areaPrincipal.getComponentCount() == quantidadeComponentesInicial) {
+            TelaBuscarPorSerie telaBuscarporSerie = new TelaBuscarPorSerie();
+            areaPrincipal.add(telaBuscarporSerie);
+            telaBuscarporSerie.setVisible(true);
+            telaBuscarporSerie.centralizar();
+        }
+    }//GEN-LAST:event_menuItemBuscarPorSerieActionPerformed
+
+    private void menuItemListarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarTodosActionPerformed
+        abrirJanelaListarTodos();
+    }//GEN-LAST:event_menuItemListarTodosActionPerformed
+
+    private void abrirJanelaListarTodos() {
+        if (areaPrincipal.getComponentCount() == quantidadeComponentesInicial) {
+            TelaListarAlunos telaListagemAlunos = new TelaListarAlunos();
+            areaPrincipal.add(telaListagemAlunos);
+            telaListagemAlunos.setVisible(true);
+            telaListagemAlunos.centralizar();
+        }
+    }
+
+    private void btnBuscarPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorNomeActionPerformed
+        abrirJanelaBuscarPorNome();
+    }//GEN-LAST:event_btnBuscarPorNomeActionPerformed
+
+    private void menuItemBuscarPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemBuscarPorNomeActionPerformed
+        abrirJanelaBuscarPorNome();
+    }//GEN-LAST:event_menuItemBuscarPorNomeActionPerformed
+
+    private void abrirJanelaBuscarPorNome() {
+        if (areaPrincipal.getComponentCount() == quantidadeComponentesInicial) {
+            TelaBuscarPorNome telaBuscarPorNome = new TelaBuscarPorNome();
+            areaPrincipal.add(telaBuscarPorNome);
+            telaBuscarPorNome.setVisible(true);
+            telaBuscarPorNome.centralizar();
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -340,13 +298,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -361,31 +323,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane areaPrincipal;
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JButton btnBuscarEndereco;
+    private javax.swing.JButton btnBuscarPorNome;
     private javax.swing.JButton btnCadastrarAluno;
-    private javax.swing.JButton btnExcluirAluno;
+    private javax.swing.JButton btnListarTodos;
     private javax.swing.JLabel labelAcessoFacil;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenu menuConsultar;
-    private javax.swing.JMenu menuEditar;
+    private javax.swing.JMenuItem menuItemBuscarPorNome;
+    private javax.swing.JMenuItem menuItemBuscarPorSerie;
     private javax.swing.JMenuItem menuItemCadastrarAluno;
-    private javax.swing.JMenuItem menuItemCadastrarEndereco;
+    private javax.swing.JMenuItem menuItemListarTodos;
     private javax.swing.JPanel painelPrincipal;
     private javax.swing.JPanel painelTitulo;
-    private javax.swing.JMenuItem submenuAlterarDados;
-    private javax.swing.JMenu submenuAluno;
-    private javax.swing.JMenuItem submenuAlunoExcluir;
-    private javax.swing.JMenuItem submenuConsultarAlunos;
-    private javax.swing.JMenuItem submenuConsultarEndereco;
-    private javax.swing.JMenuItem submenuContato;
-    private javax.swing.JMenu submenuEndereco;
-    private javax.swing.JMenuItem submenuEnderecoAlterar;
-    private javax.swing.JMenuItem submenuExcluir;
-    private javax.swing.JMenuItem submenuListaAluno;
-    private javax.swing.JMenuItem submenuListaEndereco;
-    private javax.swing.JMenuItem submenuSobre;
     // End of variables declaration//GEN-END:variables
 }

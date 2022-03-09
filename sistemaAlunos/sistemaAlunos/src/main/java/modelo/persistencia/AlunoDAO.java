@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import modelo.Aluno;
+import modelo.Endereco;
 
 /**
  *
@@ -79,7 +80,79 @@ public class AlunoDAO {
      * @return vetor com os alunos da série recebida como parâmetro.
      */
     public static Aluno[] buscarPorSerie(int serie) throws Exception {
-        return null; // retorno temporário, falta implementar
+
+        Connection conexao = FabricaDeConexoes.getConnection();
+
+        String sql = "SELECT * FROM aluno a, endereco e"
+                + " WHERE serie = ? AND a.cod_endereco = e.cod_endereco";
+
+        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+
+        comandoPreparado.setInt(1, serie);
+
+        ResultSet resultado = comandoPreparado.executeQuery();
+
+        Aluno[] alunos = new Aluno[getQtdBuscaPorSerie(serie)];
+
+        int contAlunos = 0;
+
+        while (resultado.next()) {
+
+            int matricula = resultado.getInt("matricula");
+            String nome = resultado.getString("nome");
+            String telefone = resultado.getString("telefone");
+            String situacao = resultado.getString("situacao");
+
+            int codEndereco = resultado.getInt("cod_endereco");
+            String cidade = resultado.getString("cidade");
+            String bairro = resultado.getString("bairro");
+            String rua = resultado.getString("rua");
+            int numeroCasa = resultado.getInt("numero_casa");
+            Endereco endereco = new Endereco(codEndereco, cidade, bairro,
+                    rua, numeroCasa);
+
+            Aluno a = new Aluno(matricula, nome, telefone, serie,
+                    situacao, endereco);
+
+            alunos[contAlunos] = a;
+
+            contAlunos++;
+
+        }
+
+        comandoPreparado.close();
+
+        conexao.close();
+
+        return alunos;
+
+    }
+
+    public static int getQtdBuscaPorSerie(int serie) throws Exception {
+
+        Connection conexao = FabricaDeConexoes.getConnection();
+
+        String sql = "SELECT count(*) as qtd_alunos FROM aluno "
+                + "WHERE serie = ?";
+
+        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+
+        comandoPreparado.setInt(1, serie);
+
+        ResultSet resultado = comandoPreparado.executeQuery();
+
+        resultado.next();
+
+        int qtdAlunos = resultado.getInt("qtd_alunos");
+
+        resultado.close();
+
+        comandoPreparado.close();
+
+        conexao.close();
+
+        return qtdAlunos;
+
     }
 
     /**
@@ -91,7 +164,76 @@ public class AlunoDAO {
      * recebido.
      */
     public static Aluno[] buscarPorNome(String nome) throws Exception {
-        return null; // retorno temporário, falta implementar
+        Connection conexao = FabricaDeConexoes.getConnection();
+
+        String sql = "SELECT * FROM aluno a, endereco e"
+                + " WHERE nome LIKE ? AND a.cod_endereco = e.cod_endereco";
+
+        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+
+        comandoPreparado.setString(1, "%" + nome + "%");
+
+        ResultSet resultado = comandoPreparado.executeQuery();
+
+        Aluno[] alunos = new Aluno[getQtdBuscaPorNome(nome)];
+
+        int contAlunos = 0;
+      
+        while (resultado.next()) {
+
+            int matricula = resultado.getInt("matricula");
+            nome = resultado.getString("nome");
+            int serie = resultado.getInt("serie");
+            String telefone = resultado.getString("telefone");
+            String situacao = resultado.getString("situacao");
+
+            int codEndereco = resultado.getInt("cod_endereco");
+            String cidade = resultado.getString("cidade");
+            String bairro = resultado.getString("bairro");
+            String rua = resultado.getString("rua");
+            int numero = resultado.getInt("numero_casa");
+            Endereco endereco = new Endereco(codEndereco, cidade, bairro, rua, numero);
+
+            Aluno a = new Aluno(matricula, nome, telefone, serie, situacao, endereco);
+
+            alunos[contAlunos] = a;
+
+            contAlunos++;
+
+        }
+
+        resultado.close();
+        comandoPreparado.close();
+        conexao.close();
+
+        return alunos;
+    }
+
+    public static int getQtdBuscaPorNome(String nome) throws Exception {
+
+        Connection conexao = FabricaDeConexoes.getConnection();
+
+        String sql = "SELECT count(matricula) as qtd_alunos FROM aluno "
+                + "WHERE nome LIKE ?";
+
+        PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
+
+        comandoPreparado.setString(1, "%" + nome + "%");
+
+        ResultSet resultado = comandoPreparado.executeQuery();
+
+        resultado.next();
+
+        int qtdAlunos = resultado.getInt("qtd_alunos");
+
+        resultado.close();
+
+        comandoPreparado.close();
+
+        conexao.close();
+
+        return qtdAlunos;
+
     }
 
     /**
@@ -145,7 +287,7 @@ public class AlunoDAO {
 
         resultado.next();
 
-        int qtdAlunos = resultado.getInt("matricula");
+        int qtdAlunos = resultado.getInt("count(matricula)");
 
         resultado.close();
         comandoPreparado.close();
@@ -162,34 +304,25 @@ public class AlunoDAO {
      * false; se não foi possível realizar a alteração.
      */
     public static boolean alterar(Aluno a) throws Exception {
-        return false; // retorno temporário, falta implementar
-    }
-
-    /**
-     * Faz alteração na situação do aluno com a dada matrícula.
-     *
-     * @param matricula a matrícula do aluno cuja situação será alterada.
-     * @param situacao a nova situação que será atribuída ao aluno.
-     * @return true: se foi possível realizar a alteração.<br>
-     * false; se não foi possível realizar a alteração.
-     */
-    public static boolean alterarSituacao(int matricula, String situacao)
-            throws Exception {
-
         Connection conexao = FabricaDeConexoes.getConnection();
 
-        String sql = "UPDATE aluno SET situacao = ? WHERE matricula = ?";
+        String sql = "UPDATE aluno SET nome = ?, telefone = ?, serie = ?, "
+                + "situacao = ? WHERE matricula = ?";
 
         PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
 
-        comandoPreparado.setString(1, situacao);
-        comandoPreparado.setInt(2, matricula);
+        comandoPreparado.setString(1, a.getNome());
+        comandoPreparado.setString(2, a.getTelefone());
+        comandoPreparado.setInt(3, a.getSerie());
+        comandoPreparado.setString(4, a.getSituacao());
+        comandoPreparado.setInt(5, a.getMatricula());
 
         comandoPreparado.execute();
 
         comandoPreparado.close();
         conexao.close();
-
         return true;
     }
+
+    
 }

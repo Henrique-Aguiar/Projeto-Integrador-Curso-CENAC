@@ -85,7 +85,7 @@ public class EnderecoDAO {
         Connection conexao = FabricaDeConexoes.getConnection();
         
         String sql = "UPDATE endereco SET cidade = ?, bairro = ?, rua = ?,"
-                + " numero = ? WHERE cod_endereco = ?";
+                + " numero_casa = ? WHERE cod_endereco = ?";
         
         PreparedStatement comandoPreparado = conexao.prepareStatement(sql);
         
@@ -102,14 +102,5 @@ public class EnderecoDAO {
         return true;
     }
 
-    /**
-     * Realiza a busca pelo endereço com um código determinado.
-     *
-     * @param codEndereco código do endereço que se deseja buscar.
-     * @return objeto da classe Endereço com os dados encontrados<br>
-     * null: se não foi possível encontrar endereço.
-     */
-    public static Endereco buscarPorCodigo(int codEndereco) throws Exception {
-        return null; // retorno temporário, falta implementar
-    }
+   
 }
